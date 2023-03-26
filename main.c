@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 		tokens[1] = &line_cpy[strlen(tokens[0]) + 1];
 		free(line);
 		line = NULL;
+/*		printf("tokens[0]: %s\n", tokens[0]); */
 		top = execute(tokens, line_number);
 		line_number++;
 	}

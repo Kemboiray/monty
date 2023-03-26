@@ -1,10 +1,8 @@
 push 1
-push 5
-pall
-push -0
+push 2
 push 3
-push qwer
-pint
-pall
-nonsense
-push nonsense
+push -6
+push -7 
+push  -8
+push 9  
+ 		   pall   
