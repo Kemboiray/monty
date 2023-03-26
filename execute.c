@@ -17,7 +17,6 @@ stack_t *execute(char **tokens, size_t line_number)
 {
 	char *opcode = tokens[0];
 	char *arg = tokens[1];
-	char temp[1024];
 	unsigned int i;
 	instruction_t instruction[] = {
 		{"push", push},
@@ -26,21 +25,20 @@ stack_t *execute(char **tokens, size_t line_number)
 		{NULL, NULL}
 	};
 
-	memset(temp, 0, 1024);
-	strncpy(temp, arg, strlen(arg) - 1);
+	arg[strlen(arg) - 1] = 0;
 	for (i = 0; instruction[i].opcode; i++)
 	{
 		if (strcmp(opcode, instruction[i].opcode) == 0)
 		{
 			if (strcmp(instruction[i].opcode, "push") == 0)
 			{
-				if (is_number(temp) == 0)
+				if (is_number(arg) == 0)
 				{
 					free_list(top);
 					fprintf(stderr, "L%lu: usage: push integer\n", line_number);
 					exit(EXIT_FAILURE);
 				}
-				item = atoi(temp);
+				item = atoi(arg);
 			}
 			instruction[i].f(&top, line_number);
 			return (top);
