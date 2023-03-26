@@ -39,6 +39,7 @@ extern int item;
 extern stack_t *top;
 /* FUNCTION DECLARATIONS */
 stack_t *execute(char **tokens, size_t line_number);
+unsigned int is_number(char *str);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
