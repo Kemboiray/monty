@@ -1,0 +1,18 @@
+Use 2 arguments to main:
+	if argc != 2, exit(failure).
+Open file - (fopen?):
+	if open fails, exit(failure).
+Read and execute file line by line:
+	parse instructions and perform operations accordngly eg calling various functions.
+	if instruction is invalid, exit(failure).
+	Valid instructions:
+		- push <int>
+		- pall
+		- pint
+		- pop
+		- swap
+		- add
+		- nop
+Use getline() to read line into a buffer
+Use strspn to skip lines consisting entirely of whitespace characters
+Use strtok to break the lines into words. Only the first 3 words are needed.
