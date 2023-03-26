@@ -22,6 +22,7 @@ stack_t *execute(char **tokens, size_t line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 
