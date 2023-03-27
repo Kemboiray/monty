@@ -31,10 +31,16 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&(global.line), &len, global.file)) != -1)
 	{
 		if (strspn(global.line, " \n\r\t\a") == strlen(global.line))
+		{
+			line_number++;
 			continue;
+		}
 		opcode = strtok(global.line, " \n\t");
 		if (opcode[0] == '#')
+		{
+			line_number++;
 			continue;
+		}
 		global.arg = &(global.line)[strlen(opcode) + 1];
 		execute(opcode, line_number);
 		line_number++;
