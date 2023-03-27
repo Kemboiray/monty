@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 			line_number++;
 			continue;
 		}
-		global.arg = &(global.line)[strlen(opcode) + 1];
+		global.arg = opcode + strlen(opcode) + 1;
 		execute(opcode, line_number);
 		line_number++;
 	}
