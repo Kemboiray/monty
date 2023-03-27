@@ -24,6 +24,7 @@ void execute(char *opcode, unsigned int line_number)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divide},
+		{"mul", multiply},
 		{NULL, NULL}
 	};
 
