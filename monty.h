@@ -1,9 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
 #define _GNU_SOURCE
+#include <stdio.h>
 #include <stddef.h>
 
-#define LINE_LENGTH 1024
 /* STRUCT DEFINITIONS */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,10 +35,29 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern int item;
-extern stack_t *top;
+/**
+ * struct global_s - global variable
+ * @item: integer to push to stack
+ * @arg: argument string to push()
+ * @line: pointer to line buffer
+ * @top: pointer to stack
+ * @file: pointer to file stream
+ *
+ * Description: global variable
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct global_s
+{
+	int item;
+	char *arg;
+	char *line;
+	stack_t *top;
+	FILE *file;
+} global_t;
+
+extern global_t global;
 /* FUNCTION DECLARATIONS */
-stack_t *execute(char **tokens, size_t line_number);
+void execute(char *opcode, unsigned int line_number);
 unsigned int is_number(char *str);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -48,5 +67,6 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void free_list(stack_t *stack);
+void clean(void);
 
 #endif /* MONTY_H */

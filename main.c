@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+global_t global = {0, NULL, NULL, NULL, NULL};
 /**
  * main - entry point
  * @argc: argument count
@@ -10,47 +11,32 @@
  *
  * Return: EXIT_SUCCESS or EXIT_FAILURE.
  */
-
 int main(int argc, char *argv[])
 {
-	FILE *file;
-	char *line = NULL;
-	char line_cpy[LINE_LENGTH];
-	size_t len = 0, line_number = 1;
+	size_t len = 0;
+	unsigned int line_number = 1;
 	ssize_t nread;
-	static char *tokens[] = {NULL, NULL};
-	stack_t *top = NULL;
+	char *opcode = NULL;
 
 	if (argc != 2)
 		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
 
-	memset(line_cpy, 0, LINE_LENGTH);
-
-	file = fopen(argv[1], "r");
-	if (!file)
+	global.file = fopen(argv[1], "r");
+	if (!(global.file))
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((nread = getline(&line, &len, file)) != -1)
+	while ((nread = getline(&(global.line), &len, global.file)) != -1)
 	{
-		if (strspn(line, " \n\r\t\a") == strlen(line))
-		{
-			free(line);
-			line = NULL;
+		if (strspn(global.line, " \n\r\t\a") == strlen(global.line))
 			continue;
-		}
-		strncpy(line_cpy, line, LINE_LENGTH);
-		tokens[0] = strtok(line_cpy, " \n\t");
-		tokens[1] = &line_cpy[strlen(tokens[0]) + 1];
-		free(line);
-		line = NULL;
-/*		printf("tokens[0]: %s\n", tokens[0]); */
-		top = execute(tokens, line_number);
+		opcode = strtok(global.line, " \n\t");
+		global.arg = &(global.line)[strlen(opcode) + 1];
+		execute(opcode, line_number);
 		line_number++;
 	}
-	free_list(top), free(line);
-	fclose(file);
+	clean();
 	exit(EXIT_SUCCESS);
 }
