@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
 		if (strspn(global.line, " \n\r\t\a") == strlen(global.line))
 			continue;
 		opcode = strtok(global.line, " \n\t");
+		if (opcode[0] == '#')
+			continue;
 		global.arg = &(global.line)[strlen(opcode) + 1];
 		execute(opcode, line_number);
 		line_number++;
