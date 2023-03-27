@@ -52,7 +52,7 @@ unsigned int is_number(char *str)
 		return (0);
 	for (i = 0; str[i]; i++)
 	{
-		if (strchr("0123456789", str[i]) && strchr(" \t", str[i+1]))
+		if (strchr("0123456789", str[i]) && strchr(" \t", str[i + 1]))
 			break;
 		if (!(strchr("-+0123456789 \n\t", str[i])))
 			return (0);
