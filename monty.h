@@ -72,6 +72,7 @@ void multiply(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
 void modulate(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void free_list(stack_t *stack);
 void clean(void);

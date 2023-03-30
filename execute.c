@@ -28,6 +28,7 @@ void execute(char *opcode, unsigned int line_number)
 		{"div", divide},
 		{"mod", modulate},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{"nop", nop},
 		{NULL, NULL}
 	};
