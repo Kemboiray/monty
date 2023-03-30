@@ -23,11 +23,12 @@ void execute(char *opcode, unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop},
 		{"sub", sub},
-		{"div", divide},
 		{"mul", multiply},
+		{"div", divide},
 		{"mod", modulate},
+		{"rotl", rotl},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
