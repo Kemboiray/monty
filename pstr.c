@@ -3,19 +3,22 @@
 #include <stdlib.h>
 
 /**
- * pall - print the stack
+ * pstr - print the stack
  * @stack: pointer to stack (linked list)
  * @line_number: line number of instruction
  *
  * Return: void.
  */
-void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *temp = *stack;
 
 	while (temp)
 	{
-		printf("%d\n", temp->n);
+		if (temp->n <= 0 || temp->n > 127)
+			break;
+		putchar(temp->n);
 		temp = temp->next;
 	}
+	putchar(10);
 }

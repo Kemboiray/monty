@@ -17,6 +17,7 @@ void execute(char *opcode, unsigned int line_number)
 	instruction_t instruction[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pstr", pstr},
 		{"pint", pint},
 		{"pchar", pchar},
 		{"pop", pop},
