@@ -18,6 +18,7 @@ void execute(char *opcode, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pchar", pchar},
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
